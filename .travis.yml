@@ -1,0 +1,30 @@
+language: node_js # 构建所需的语言环境
+node_js:
+  - "v10.15.3"  # 对应的版本
+
+cache:
+  directories:
+  - node_modules # 依赖缓存的目录
+
+install:
+  - npm install  # 安装编译工具
+
+script:
+  - true 
+
+after_script: #最后执行的命令
+  - cd ./public
+  - git init
+  - git config user.name "wenqian1234"
+  - git config user.email "980602488@qq.com"
+  - git add .
+  - git commit -m "自动部署"
+  - git push --force --quiet "https://${newgit}@${GH_REF}" master:gh-pages  #想上传哪个分支
+
+branches:
+  only:
+  - master    # 触发持续集成的分支,源码所在分支
+
+env:
+  global:
+    - GH_REF: github.com/wenqian1234/newgit.git  #就是github上存放静态文件上.git

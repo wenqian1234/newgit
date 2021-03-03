@@ -10,7 +10,7 @@ install:
   - npm install  # 安装编译工具
 
 script:
-  - true 
+  - ./deploy.sh 
 
 after_script: #最后执行的命令
   - cd ./public/dist

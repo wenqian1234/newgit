@@ -10,7 +10,7 @@ install:
   - npm install  # 安装编译工具
 
 script:
-  -mpm run docs:build
+  - npm run docs:build
   # - true 
 
 after_script: #最后执行的命令
